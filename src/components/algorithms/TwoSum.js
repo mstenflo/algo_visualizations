@@ -50,8 +50,6 @@ class TwoSum extends Component {
   }
 
   runAlgo() {
-    console.log(this.state.array)
-    console.log(this.state.number)
     const result = this.algo(this.state.array, this.state.target);
     this.setState({
       result,
