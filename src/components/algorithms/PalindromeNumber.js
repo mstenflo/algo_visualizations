@@ -62,7 +62,7 @@ class PalindromeNumber extends Component {
         return null;
       }
       return (
-        <span className="border p-2 rounded bg-warning text-dark m-3 border-dark">No</span>
+        <span className="border p-2 rounded bg-danger text-light m-3 border-dark">No</span>
         )
     }
   }

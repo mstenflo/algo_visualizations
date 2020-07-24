@@ -59,14 +59,10 @@ class TwoSum extends Component {
 
   renderResult() {
     if (this.state.renderResult) {
-      if (this.state.result.length > 0) {
-        return <div>{
-          this.state.result.map(result => (
-            <div>Index: {result}</div>
-          ))
-        }</div>
-      } else {
-        return <div className="text-danger">There are no pairs that add up to the target value</div>
+      if (this.state.result.length === 0) {
+        return <div className="text-danger">
+            There are no pairs that add up to the target value
+          </div>
       }
     }
   }
