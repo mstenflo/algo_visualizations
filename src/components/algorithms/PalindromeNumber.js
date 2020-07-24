@@ -12,6 +12,7 @@ class PalindromeNumber extends Component {
     this.runAlgo = this.runAlgo.bind(this);
     this.clear = this.clear.bind(this);
     this.isPalindrome = this.isPalindrome.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   update(field) {
