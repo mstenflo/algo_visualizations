@@ -15,37 +15,7 @@ h3 {
   color: #ffbd69;
 }
 
-p {
-  line-height: 1.5;
-}
-
-.container {
-  /* padding: 20px; */
-}
-
-.algo {
-  color: #f4ea8e
-}
-
 .number-input {
-  width: 40px;
+  width: 80px;
   margin: 0 10px;
-}
-
-.array {
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  padding: 5px;
-  border: 1px solid #c70039;
-}
-
-.flex {
-  display: inline-flex;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
 }

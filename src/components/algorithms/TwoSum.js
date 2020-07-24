@@ -112,7 +112,6 @@ class TwoSum extends Component {
 
         <p>You may assume that each input would have exactly one solution,
           and you may not use the same element twice.</p>
-        <div className="border-bottom w-50 mx-auto mb-3 border-info"></div>
         <label htmlFor="target" >
           Enter a target value:
         </label>
@@ -145,8 +144,8 @@ class TwoSum extends Component {
           </div>
           {
             this.state.array.map((n, idx) => (
-              <div className="flex">
-                <div className="column">
+              <div className="d-inline-flex" >
+                <div className="text-center">
                   {this.returnIdx(n, idx)}
                 </div>
               </div>
@@ -164,7 +163,7 @@ class TwoSum extends Component {
                 <h5 className="modal-title text-primary">JavaScript Code</h5>
               </div>
               <div className="modal-body" >
-                <p>
+                <p className="text-secondary">The obvious answer would be to have a nested for-loop, comparing all the indices with each other. This, however, would lead to a time complexity of O(n<sup>2</sup>). Another method would be to create two hash tables and compare them with each other. Here is an elegant one-pass hash table solution: </p>
                 <pre>
                   <code>
                     {
@@ -177,13 +176,12 @@ class TwoSum extends Component {
 }`
                     }
                   </code>
-                  </pre>
-                </p>
+                </pre>
               </div>
             <p className="text-primary ml-5">One-pass Hash Table:</p>
             <p className="text-danger ml-5">Time: O(n) Space: O(n)</p>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
               </div>
             </div>
