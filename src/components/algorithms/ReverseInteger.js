@@ -52,13 +52,12 @@ class ReverseInteger extends Component {
   }
   
   render() {
-    console.log(this.state)
     return (
       <div className="container-fluid">
         <h3>Reverse Integer</h3>
         <p>Given a 32-bit signed integer, reverse digits of an integer.</p>
         <p>Assume we are dealing with an environment which could only store integers within the 32-bit signed 
-integer range: [−2<sup>31</sup>, 2<sup>31</sup> − 1].For the purpose of this problem, assume that your
+integer range: [−2<sup>31</sup>, 2<sup>31</sup> − 1]. For the purpose of this problem, assume that your
 function returns 0 when the reversed integer overflows.</p>
         <label htmlFor="int" >
           Enter a 32-bit integer:
@@ -67,7 +66,7 @@ function returns 0 when the reversed integer overflows.</p>
           id="int"
           type="number"
           name="int"
-          className="number-input"
+          className="ml-3"
           onChange={this.update("int")}
           value={this.state.int}
           onKeyDown={this.onKeyDown}
