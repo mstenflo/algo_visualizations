@@ -13,17 +13,17 @@ function App() {
     <div id="wrapper">
       <div>
         <h2>Algorithm Visualization</h2>
-        <TwoSum />
-        <div className="border-bottom w-75 mx-auto m-3 border-warning"></div>
-        <ReverseInteger />
-        <div className="border-bottom w-75 mx-auto m-3 border-warning"></div>
-        <PalindromeNumber />
-        <div className="border-bottom w-75 mx-auto m-3 border-warning"></div>
-        <RomanToInteger />
+        <ValidParentheses />
         <div className="border-bottom w-75 mx-auto m-3 border-warning"></div>
         <LongestCommonPrefix />
         <div className="border-bottom w-75 mx-auto m-3 border-warning"></div>
-        <ValidParentheses />
+        <RomanToInteger />
+        <div className="border-bottom w-75 mx-auto m-3 border-warning"></div>
+        <PalindromeNumber />
+        <div className="border-bottom w-75 mx-auto m-3 border-warning"></div>
+        <ReverseInteger />
+        <div className="border-bottom w-75 mx-auto m-3 border-warning"></div>
+        <TwoSum />
         <div className="border-bottom w-75 mx-auto m-3 border-warning"></div>
       </div>
     </div>
