@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Modal from '../Modal';
+import Buttons from '../Buttons';
 
 class TwoSum extends Component {
   constructor(props) {
@@ -99,6 +101,27 @@ class TwoSum extends Component {
     })
   }
 
+  modalContent() {
+    return (
+      <div>
+        <p className="text-secondary">The obvious answer would be to have a nested for-loop, comparing all the indices with each other. This, however, would lead to a time complexity of O(n<sup>2</sup>). Another method would be to create two hash tables and compare them with each other. Here is an elegant one-pass hash table solution: </p>
+        <pre>
+          <code>
+            {
+              `function twoSum(nums, target) {
+  let hash = {};
+  for (let i = 0; i < nums.length; i++) {
+    if (hash[target - nums[i]] !== undefined) return [hash[target - nums[i]], i];
+    hash[nums[i]] = i;
+  }
+}`
+              }
+            </code>
+        </pre>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -148,39 +171,20 @@ class TwoSum extends Component {
             ))
           }
         </div>
-        <button type="button" onClick={this.runAlgo} className="btn btn-primary m-3">Run</button>
-        <button type="button" onClick={this.clear} className="btn btn-danger m-3">Clear</button>
-        <button type="button" className="btn btn-warning m-3" data-toggle="modal" data-target="#showCode">Code</button>
+        <Buttons 
+          runAlgo={this.runAlgo}
+          clear={this.clear}
+          code="#twoSumCode"
+        />
         {this.renderResult()}
-        <div className="modal fade" data-backdrop="false" id="showCode" tabIndex="-1" style={{ display: 'none' }}>
-          <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title text-primary">JavaScript Code</h5>
-              </div>
-              <div className="modal-body" >
-                <p className="text-secondary">The obvious answer would be to have a nested for-loop, comparing all the indices with each other. This, however, would lead to a time complexity of O(n<sup>2</sup>). Another method would be to create two hash tables and compare them with each other. Here is an elegant one-pass hash table solution: </p>
-                <pre>
-                  <code>
-                    {
-                      `function twoSum(nums, target) {
-  let hash = {};
-  for (let i = 0; i < nums.length; i++) {
-    if (hash[target - nums[i]] !== undefined) return [hash[target - nums[i]], i];
-    hash[nums[i]] = i;
-  }
-}`
-                    }
-                  </code>
-                </pre>
-              </div>
-            <p className="text-primary ml-5">One-pass Hash Table:</p>
-            <p className="text-danger ml-5">Time: O(n) Space: O(n)</p>
-            <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-              </div>
-            </div>
+        <div
+          className="modal fade"
+          data-backdrop="false"
+          id="twoSumCode"
+          tabIndex="-1"
+          style={{ display: 'none' }}
+        >
+        <Modal content={this.modalContent} />
         </div>
       </div>
     );

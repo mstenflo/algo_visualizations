@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Modal from '../Modal';
+import Buttons from '../Buttons';
 
 class ReverseInteger extends Component {
   constructor(props) {
@@ -50,6 +52,23 @@ class ReverseInteger extends Component {
       result: ''
     })
   }
+
+  modalContent() {
+    return (
+      <div>
+        <pre>
+          <code>
+            {
+              `function reverse(x) {
+  let rev = parseInt(String(x).split('').reverse().join('')) * Math.sign(x);
+  return Math.abs(rev) > Math.pow(2, 31) - 1 ? 0 : rev;
+}`
+            }
+          </code>
+        </pre>
+      </div>
+    )
+  }
   
   render() {
     return (
@@ -73,33 +92,19 @@ function returns 0 when the reversed integer overflows.</p>
         />
         {this.renderResult()}
         <br />
-        <button type="button" onClick={this.runAlgo} className="btn btn-primary m-3">Run</button>
-        <button type="button" onClick={this.clear} className="btn btn-danger m-3">Clear</button>
-        <button type="button" className="btn btn-warning m-3" data-toggle="modal" data-target="#reverseIntegerCode">Code</button>
-        <div className="modal fade" data-backdrop="false" id="reverseIntegerCode" tabIndex="-1" style={{ display: 'none' }}>
-          <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title text-primary">JavaScript Code</h5>
-              </div>
-              <div className="modal-body" >
-                <pre>
-                  <code>
-                    {
-                      `function reverse(x) {
-  let rev = parseInt(String(x).split('').reverse().join('')) * Math.sign(x);
-  return Math.abs(rev) > Math.pow(2, 31) - 1 ? 0 : rev;
-}`
-                    }
-                  </code>
-                  </pre>
-              </div>
-            <p className="text-danger ml-5">Time: O(log(n)) Space: O(1)</p>
-            <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-              </div>
-            </div>
+        <Buttons 
+          runAlgo={this.runAlgo}
+          clear={this.clear}
+          code="#reverseIntegerCode"
+        />
+        <div
+          className="modal fade"
+          data-backdrop="false"
+          id="reverseIntegerCode"
+          tabIndex="-1"
+          style={{ display: 'none' }}
+        >
+        <Modal content={this.modalContent} />
         </div>
       </div>
     );

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Buttons from '../Buttons';
+import Modal from '../Modal';
 
 class RomanToInteger extends Component {
   constructor(props) {
@@ -95,40 +97,15 @@ class RomanToInteger extends Component {
       result: ''
     })
   }
-  
-  render() {
+
+  modalContent() {
     return (
-      <div className="container-fluid">
-        <h3>Roman to Integer</h3>
-        <p>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.</p>
-        <p>Given a roman numeral, convert it to an integer. Input should be within the range from 1 to 3999.</p>
-        <label htmlFor="roman">Enter a valid Roman Numeral</label>
-        <input 
-          type="string"
-          id="roman"
-          name="roman"
-          className="ml-3"
-          value={this.state.roman}
-          onChange={this.update('roman')}
-          onKeyDown={this.onKeyDown}
-        />
-        {this.renderResult()}
-        <br />
-        <button type="button" onClick={this.runAlgo} className="btn btn-primary m-3">Run</button>
-        <button type="button" onClick={this.clear} className="btn btn-danger m-3">Clear</button>
-        <button type="button" className="btn btn-warning m-3" data-toggle="modal" data-target="#romanToIntegerCode">Code</button>
-        <div className="modal fade" data-backdrop="false" id="romanToIntegerCode" tabIndex="-1" style={{ display: 'none' }}>
-          <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title text-primary">JavaScript Code</h5>
-              </div>
-              <div className="modal-body" >
-                <p className="text-secondary">This code does not test all the edge cases, it assumes that the number entered is a valid roman numeral. I used a switch statement to calculate the number.</p>
-                <pre>
-                  <code>
-                    {
-                      `romanToInt(roman) {
+      <div>
+        <p className="text-secondary">This code does not test all the edge cases, it assumes that the number entered is a valid roman numeral. I used a switch statement to calculate the number.</p>
+        <pre>
+          <code>
+            {
+              `function romanToInt(roman) {
   let s = roman.toUpperCase();
   let num = 0;
   for (let i = 0; i < s.length; i++) {
@@ -172,15 +149,44 @@ class RomanToInteger extends Component {
   }
   return num;
 };`
-                    }
-                  </code>
-                  </pre>
-              </div>
-            <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-              </div>
-            </div>
+                }
+          </code>
+        </pre>
+      </div>
+    )
+  }
+  
+  render() {
+    return (
+      <div className="container-fluid">
+        <h3>Roman to Integer</h3>
+        <p>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.</p>
+        <p>Given a roman numeral, convert it to an integer. Input should be within the range from 1 to 3999.</p>
+        <label htmlFor="roman">Enter a valid Roman Numeral</label>
+        <input 
+          type="string"
+          id="roman"
+          name="roman"
+          className="ml-3"
+          value={this.state.roman}
+          onChange={this.update('roman')}
+          onKeyDown={this.onKeyDown}
+        />
+        {this.renderResult()}
+        <br />
+        <Buttons 
+          runAlgo={this.runAlgo}
+          clear={this.clear}
+          code="#romanToIntegerCode"
+        />
+        <div
+          className="modal fade"
+          data-backdrop="false"
+          id="romanToIntegerCode"
+          tabIndex="-1"
+          style={{ display: 'none' }}
+        >
+          <Modal content={this.modalContent} />
         </div>
       </div>
     );

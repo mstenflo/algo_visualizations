@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Buttons from '../Buttons';
+import Modal from '../Modal';
 
 class LongestCommonPrefix extends Component {
   constructor(props) {
@@ -94,47 +96,14 @@ class LongestCommonPrefix extends Component {
     })
   }
 
-  render() {
+  modalContent() {
     return (
-      <div className="container-fluid">
-        <h3>Longest Common Prefix</h3>
-        <p> Write a function to find the longest common prefix string amongst an array of strings.
-        If there is no common prefix, return an empty string.</p>
-        <label htmlFor="word">Enter a word: </label>
-        <input 
-          id="word"
-          name="word"
-          type="string"
-          className="ml-3"
-          value={this.state.word}
-          onChange={this.update("word")}
-          onKeyDown={this.onKeyDown}
-        />
-        <div className="p-3 text-warning">
-          {
-            this.state.words.map(word => (
-              <div>
-                {word}
-              </div>
-            ))
-          }
-        {this.renderResult()}
-        </div>
-        <button type="button" onClick={this.runAlgo} className="btn btn-primary m-3">Run</button>
-        <button type="button" onClick={this.clear} className="btn btn-danger m-3">Clear</button>
-        <button type="button" className="btn btn-warning m-3" data-toggle="modal" data-target="#longestCommonPrefixCode">Code</button>
-        <div className="modal fade" data-backdrop="false" id="longestCommonPrefixCode" tabIndex="-1" style={{ display: 'none' }}>
-          <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title text-primary">JavaScript Code</h5>
-              </div>
-              <div className="modal-body" >
-                <p className="text-secondary">The obvious solution would be to iterate through each word and get the prefix. To improve run-time, I wrote the solution, using a binary search method. I grab the length of the shortest word, cut the word in half, if it is a common prefix, add half of the end, else subtract half of the beginning, until it reaches the end. So instead of iterating through the entire word, it keeps cutting the length in half. I also created a helper function to make the code more manageable.</p>
-                <pre>
-                  <code>
-                    {
-                      `function longestCommonPrefix(strs) {
+      <div>
+        <p className="text-secondary">The obvious solution would be to iterate through each word and get the prefix. To improve run-time, I wrote the solution, using a binary search method. I grab the length of the shortest word, cut the word in half, if it is a common prefix, add half of the end, else subtract half of the beginning, until it reaches the end. So instead of iterating through the entire word, it keeps cutting the length in half. I also created a helper function to make the code more manageable.</p>
+        <pre>
+          <code>
+            {
+              `function longestCommonPrefix(strs) {
   if (strs === null || strs.length === 0) return "";
   let minLen = strs[0].length;
   strs.forEach(str => {
@@ -160,17 +129,52 @@ function isCommonPrefix(strs, len) {
   }
   return true;
 }`
-                    }
-                  </code>
-                </pre>
+            }
+          </code>
+        </pre>
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div className="container-fluid">
+        <h3>Longest Common Prefix</h3>
+        <p> Write a function to find the longest common prefix string amongst an array of strings.
+        If there is no common prefix, return an empty string.</p>
+        <label htmlFor="word">Enter a word: </label>
+        <input 
+          id="word"
+          name="word"
+          type="string"
+          className="ml-3"
+          value={this.state.word}
+          onChange={this.update("word")}
+          onKeyDown={this.onKeyDown}
+        />
+        <div className="p-3 text-warning">
+          {
+            this.state.words.map(word => (
+              <div>
+                {word}
               </div>
-            <p className="text-primary ml-5">Binary Search:</p>
-            <p className="text-danger ml-5">Time: O(nlog(n)) Space: O(1)</p>
-            <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-              </div>
-            </div>
+            ))
+          }
+          {this.renderResult()}
+        </div>
+        <Buttons 
+          runAlgo={this.runAlgo}
+          clear={this.clear}
+          code="#longestCommonPrefixCode"
+        />
+        <div
+          className="modal fade"
+          data-backdrop="false"
+          id="longestCommonPrefixCode"
+          tabIndex="-1"
+          style={{ display: 'none' }}
+        >
+          <Modal content={this.modalContent} />
         </div>
       </div>
     );
